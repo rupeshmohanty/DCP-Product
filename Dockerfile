@@ -1,25 +1,9 @@
-FROM node:latest AS build
-
-WORKDIR /build
-
-COPY package.json package.json
-
-COPY package-lock.json package-lock.json
-
-RUN npm install
-
-COPY public/ public
-
-COPY src/ src
-
+FROM node:13.12.0-alpine as build
+WORKDIR /app
+ENV PATH /app/node_modules/.bin:$PATH
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm ci --silent
+RUN npm install react-scripts@3.4.1 -g --silent
+COPY . ./
 RUN npm run build
-
-# Bundle static assets with nginx
-FROM nginx:1.21.0-alpine as production
-# Copy built assets from builder
-COPY --from=builder /app/build /usr/share/nginx/html
-# Add your nginx.conf
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
