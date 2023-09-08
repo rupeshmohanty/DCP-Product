@@ -56,7 +56,7 @@ pipeline {
         }
         stage('Docker deploy'){
             steps {
-               sh 'docker run -itd --name react_container${BUILD_NUMBER} -p  8081:8081 dcpdocker1/dcpimage:${BUILD_NUMBER}'
+               sh 'docker run -itd --name react_container${BUILD_NUMBER} -p  8081:8081 dcpdocker1/reactimage:${BUILD_NUMBER}'
             }
         }
     }
