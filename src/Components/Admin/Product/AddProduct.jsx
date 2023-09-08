@@ -1,7 +1,9 @@
+import Navbar from "./sub-components/Navbar";
+
 const AddProduct = () => {
     return(
         <>
-            Add product page
+            <Navbar/>
         </>
     )
 }
