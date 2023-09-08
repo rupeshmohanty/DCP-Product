@@ -1,36 +1,27 @@
-# Extending image
-FROM node:carbon
+# Fetching the latest node image on apline linux
+FROM node:alpine AS builder
 
-RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get -y install autoconf automake libtool nasm make pkg-config git apt-utils
+# Declaring env
+ENV NODE_ENV production
 
-# Create app directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+# Setting up the work directory
+WORKDIR /app
 
-# Versions
-RUN npm -v
-RUN node -v
-
-# Install app dependencies
-COPY package.json /usr/src/app/
-COPY package-lock.json /usr/src/app/
-
+# Installing dependencies
+COPY ./package.json ./
 RUN npm install
 
-# Bundle app source
-COPY . /usr/src/app
+# Copying all the files in our project
+COPY . .
 
-# Port to listener
-EXPOSE 3000
+# Building our application
+RUN npm run build
 
-# Environment variables
-ENV NODE_ENV production
-ENV PORT 3000
-ENV PUBLIC_PATH "/"
+# Fetching the latest nginx image
+FROM nginx
 
-RUN npm run start:build
+# Copying built assets from builder
+COPY --from=builder /app/build /usr/share/nginx/html
 
-# Main command
-CMD [ "npm", "run", "start:server" ]
+# Copying our nginx.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
