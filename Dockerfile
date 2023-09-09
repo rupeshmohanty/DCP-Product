@@ -4,8 +4,8 @@ WORKDIR /app
 COPY package.json .
 COPY package-lock.json .
 RUN npm ci --silent
-RUN npm install -g server
+RUN npm install -g serve
 COPY . .
 RUN npm run build
 
-ENTRYPOINT ["npm", "run", "start"]
+ENTRYPOINT ["serve", "-s", "build"]
