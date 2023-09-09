@@ -8,4 +8,4 @@ RUN npm install -g server
 COPY . .
 RUN npm run build
 
-ENTRYPOINT ["serve", "-s", "build"]
+ENTRYPOINT ["npm", "run", "start"]
