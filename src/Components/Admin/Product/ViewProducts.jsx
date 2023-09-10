@@ -1,7 +1,13 @@
+import Navbar from "./sub-components/Navbar";
+import ProductViewComponent from "./sub-components/ProductViewComponent";
+
 const ViewProducts = () => {
     return(
         <>
-            View products
+            <Navbar/>
+            <div className="container" style={{ marginTop: '40px' }}>
+                <ProductViewComponent/>
+            </div>
         </>
     )
 }
