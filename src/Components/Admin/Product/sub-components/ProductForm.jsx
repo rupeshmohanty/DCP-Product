@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ProductForm = (props) => {
     const [data, setData] = useState({
@@ -25,7 +25,7 @@ const ProductForm = (props) => {
         .then((res) => console.log(res))
     }
 
-    if (props.operationType === "Add") {
+    if (props.params.operationType === "Add") {
         return(
             <div className="card" style={{ marginTop: '40px' }}>
                 <div className="card-body">
@@ -57,6 +57,15 @@ const ProductForm = (props) => {
             </div>
         )
     } else {
+        const productId = props.params.id;
+        // useEffect(() => {
+        //     axios.get('http://18.132.190.180:8081/products/' + productId)
+        //     .then((res) => {
+        //         setData(res.data);
+        //     })
+        // }, [])
+
+        console.log(productId);
         return(
             <div className="card" style={{ marginTop: '40px' }}>
                 <div className="card-body">
@@ -66,10 +75,10 @@ const ProductForm = (props) => {
                             <label for="exampleInputEmail1" className="form-label">Product Name</label>
                             <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
                         </div>
-                        <div className="mb-3">
+                        {/* <div className="mb-3">
                             <label for="exampleInputPassword1" className="form-label">Product image url</label>
                             <input type="text" className="form-control" id="exampleInputPassword1"/>
-                        </div>
+                        </div> */}
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label">Product Description</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -78,10 +87,10 @@ const ProductForm = (props) => {
                             <label for="exampleInputPassword1" className="form-label">Price</label>
                             <input type="number" className="form-control" id="exampleInputPassword1"/>
                         </div>
-                        <div className="mb-3">
+                        {/* <div className="mb-3">
                             <label for="exampleInputPassword1" className="form-label">Quantity</label>
                             <input type="number" className="form-control" id="exampleInputPassword1"/>
-                        </div>
+                        </div> */}
                         <button type="submit" className="btn btn-primary">Edit Product</button>
                     </form>  
                 </div>

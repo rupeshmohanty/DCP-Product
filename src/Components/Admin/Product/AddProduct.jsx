@@ -2,11 +2,15 @@ import Navbar from "./sub-components/Navbar";
 import ProductForm from "./sub-components/ProductForm";
 
 const AddProduct = () => {
+    const multipleProps = {
+        operationType: "Add"
+    };
+
     return(
         <>
             <Navbar/>
             <div className="container">
-                <ProductForm operationType = "Add"/>
+                <ProductForm params = { multipleProps }/>
             </div>
         </>
     )
