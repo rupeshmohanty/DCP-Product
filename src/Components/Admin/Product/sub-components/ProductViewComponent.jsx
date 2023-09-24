@@ -14,13 +14,6 @@ const ProductViewComponent = () => {
 
     console.log(products);
 
-    const deleteProduct = (prodId) => {
-        axios.get('http://18.132.190.180:8081/products/delete/' + prodId)
-        .then(() => {
-            console.log("Product deleted, please refresh page!");
-        })
-    }
-
     return(
         <>
             <div className="row">
@@ -42,7 +35,7 @@ const ProductViewComponent = () => {
                                             <Link to = { editLink } class="btn btn-primary"><i class="fa-solid fa-pencil"></i></Link>
                                         </div>
                                         <div className="col-md-3">
-                                            <Link onClick={deleteProduct(id)} class="btn btn-primary"><i class="fa-solid fa-trash"></i></Link>
+                                            <Link onClick={ () => axios.get('http://18.132.190.180:8081/products/delete/' + id).then(() => console.log("Product deleted")) } class="btn btn-primary"><i class="fa-solid fa-trash"></i></Link>
                                         </div>
                                     </div>
                                 </div>

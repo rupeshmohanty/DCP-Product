@@ -1,12 +1,24 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-const ProductForm = (props) => {
+const EditProductForm = () => {
     const [data, setData] = useState({
         "productCode": "",
         "productDescription": "",
         "price": ""
     })
+
+    const productId = useParams();
+
+    useEffect(() => {
+        axios.get('http://18.132.190.180:8081/products/' + productId.id)
+        .then((res) => {
+            setData(res.data)
+        })
+    }, []);
+
+    console.log(data);
 
     const handleChange = (e) => {
         setData({
@@ -15,21 +27,18 @@ const ProductForm = (props) => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const editProduct = (e) => {
         e.preventDefault();
-        addProduct(data);
+        axios.post('http://18.132.190.180:8081/products/update/' + productId, data, { headers: { 'Content-Type': 'application/json'} })
+        .then((res) => {
+            console.log(res.data);
+        })
     }
-
-    const addProduct = (data) => {
-        axios.post('http://18.132.190.180:8081/products/create', data, { mode: 'cors' })
-        .then((res) => console.log(res))
-    }
-
     return(
         <div className="card" style={{ marginTop: '40px' }}>
             <div className="card-body">
-                <h4>Add Product</h4><br/>
-                <form onSubmit={handleSubmit}>
+                <h4>Edit Product</h4><br/>
+                <form onSubmit={ editProduct }>
                     <div className="mb-3">
                         <label for="exampleInputEmail1" className="form-label">Product Name</label>
                         <input type="text" className="form-control" id="exampleInputEmail1" name = "productCode" value = {data.productCode} onChange={handleChange} aria-describedby="emailHelp"/>
@@ -40,7 +49,7 @@ const ProductForm = (props) => {
                     </div> */}
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Product Description</label>
-                        <textarea class="form-control" name = "productDescription" value = {data.productDescription} onChange={handleChange} id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name = "productDescription" value = {data.productDescription} onChange={handleChange}></textarea>
                     </div>
                     <div className="mb-3">
                         <label for="exampleInputPassword1" className="form-label">Price</label>
@@ -50,11 +59,11 @@ const ProductForm = (props) => {
                         <label for="exampleInputPassword1" className="form-label">Quantity</label>
                         <input type="number" className="form-control" id="exampleInputPassword1"/>
                     </div> */}
-                    <button type="submit" className="btn btn-primary">Add Product</button>
+                    <button type="submit" className="btn btn-primary">Edit Product</button>
                 </form>  
             </div>
         </div>
     )
 }
 
-export default ProductForm;
+export default EditProductForm;
