@@ -14,9 +14,9 @@ const Navbar = () => {
                     <Link class="nav-link active" aria-current="page">Home</Link>
                     </li>
                     <li class="nav-item">
-                    <Link class="nav-link">Link</Link>
+                    <Link to = "/add" class="nav-link">Add Product</Link>
                     </li>
-                    <li class="nav-item dropdown">
+                    {/* <li class="nav-item dropdown">
                     <Link class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Dropdown
                     </Link>
@@ -26,7 +26,7 @@ const Navbar = () => {
                         <li><hr class="dropdown-divider"/></li>
                         <li><Link class="dropdown-item">Something else here</Link></li>
                     </ul>
-                    </li>
+                    </li> */}
                 </ul>
                 </div>
             </div>
