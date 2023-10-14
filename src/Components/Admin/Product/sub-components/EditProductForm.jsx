@@ -10,13 +10,14 @@ const EditProductForm = () => {
     })
 
     const productId = useParams();
+    const link = 'http://18.132.190.180:8081/products/' + productId.id;
 
     useEffect(() => {
-        axios.get('http://18.132.190.180:8081/products/' + productId.id)
+        axios.get(link)
         .then((res) => {
             setData(res.data)
         })
-    }, []);
+    });
 
     console.log(data);
 
