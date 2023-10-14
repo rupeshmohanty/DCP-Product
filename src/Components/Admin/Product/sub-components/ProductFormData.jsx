@@ -21,13 +21,6 @@ export default function ProductFormData() {
         "price": ""
     })
 
-    const handleChange = (e) => {
-        setData({
-            ...data,
-            [e.target.name]: e.target.value
-        })
-    }
-
     const handleSubmit = (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
@@ -42,7 +35,7 @@ export default function ProductFormData() {
 
         axios.post('http://18.170.1.155:8081/products/create', data, { mode: 'cors' })
             .then((res) => {
-                if(res.status == 200) {
+                if(res.status === 200) {
                     window.location.href = "/";
                 }
             })
