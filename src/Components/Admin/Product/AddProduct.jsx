@@ -1,6 +1,5 @@
 import Navbar from "./sub-components/Navbar";
-import ProductForm from "./sub-components/ProductForm";
-import TempProductForm from "./sub-components/TempProductForm";
+import ProductFormData from "./sub-components/ProductFormData";
 
 const AddProduct = () => {
     const multipleProps = {
@@ -11,8 +10,7 @@ const AddProduct = () => {
         <>
             <Navbar/>
             <div className="container">
-                {/* <ProductForm params = { multipleProps }/> */}
-                <TempProductForm/>
+                <ProductFormData/>
             </div>
         </>
     )

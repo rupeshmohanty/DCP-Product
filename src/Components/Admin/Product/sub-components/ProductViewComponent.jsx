@@ -16,7 +16,7 @@ const ProductViewComponent = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.get('http://18.132.190.180:8081/products')
+        axios.get('http://18.170.1.155:8081/products')
         .then((res) => {
             setProducts(res.data)
         })
