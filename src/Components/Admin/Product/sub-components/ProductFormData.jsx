@@ -15,12 +15,6 @@ import axios from 'axios';
 const defaultTheme = createTheme();
 
 export default function ProductFormData() {
-    const [data, setData] = React.useState({
-        "productCode": "",
-        "productDescription": "",
-        "price": ""
-    })
-
     const handleSubmit = (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
