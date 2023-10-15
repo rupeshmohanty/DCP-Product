@@ -16,7 +16,7 @@ const defaultTheme = createTheme();
 
 export default function ProductFormData() {
     const handleSubmit = (event) => {
-        event.preventDefault();
+        event.preventDefault(); 
         const formData = new FormData(event.target);
         console.log(formData);
         const data = {};
@@ -58,28 +58,203 @@ export default function ProductFormData() {
               margin="normal"
               required
               fullWidth
-              id="productCode"
-              label="Product Code"
-              name="productCode"
-              autoFocus
-            />
-            <TextField
-              id="outlined-multiline-flexible"
-              required
-              fullWidth
-              multiline
-              rows={4}
-              label="Product Description"
-              name="productDescription"
+              id="brand"
+              label="Brand"
+              name="brand"
               autoFocus
             />
             <TextField
               margin="normal"
               required
               fullWidth
-              name="price"
-              label="Price"
+              multiline
+              label="Model"
+              name="model"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              type='number'
+              name="number_of_colors"
+              label="Number of colors"
+              id="number_of_colors"
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              type='number'
+              id="screen_size"
+              label="Screen size"
+              name="screen_size"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              multiline
+              label="Resolution"
+              name="resolution"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="processor"
+              label="Processor"
+              id="processor"
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              type='number'
+              id="ram_in_GBs"
+              label="RAM"
+              name="ram_in_GBs"
+              autoFocus
+            />
+            <TextField
+              margin='normal'
+              required
+              fullWidth
+              multiline
+              type='number'
+              label="Storage"
+              name="storage_in_GBs"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              type='number'
+              name="battery_capacity"
+              label="Battery Capacity"
+              id="battery_capacity"
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              type='number'
+              id="camera_resolution"
+              label="Camera Resolution"
+              name="camera_resolution"
+              autoFocus
+            />
+            <TextField
+              margin='normal'
+              required
+              fullWidth
+              multiline
+              type='number'
+              label="Front Camera Resolution"
+              name="front_camera_resolution"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              type='number'
+              name="operating_system_version"
+              label="Operating System version"
+              id="operating_system_version"
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="network_technology"
+              label="Network Technology"
+              name="network_technology"
+              autoFocus
+            />
+            <TextField
+              margin='normal'
+              required
+              fullWidth
+              multiline
+              type='number'
+              label="Release date"
+              name="release_date"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              type='number'
+              name="weight"
+              label="Weight"
+              id="weight"
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="dimensions"
+              label="Dimensions"
+              name="dimensions"
+              autoFocus
+            />
+            <TextField
+              margin='normal'
+              required
+              fullWidth
+              multiline
+              label="Bluetooth Version"
+              name="bluetooth_version"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="usb_type"
+              label="USB Type"
+              id="usb_type"
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="sensors"
+              label="Sensors"
+              name="sensors"
+              autoFocus
+            />
+            <TextField
+              margin='normal'
+              required
+              fullWidth
+              multiline
+              label="Sim Card Type"
+              name="sim_card_type"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="display_type"
+              label="Displaye Type"
+              id="display_type"
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              type='number'
               id="price"
+              label="Price"
+              name="price"
+              autoFocus
             />
             <Button
               type="submit"

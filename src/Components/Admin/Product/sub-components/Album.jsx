@@ -12,6 +12,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Navbar from "./Navbar";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
@@ -86,15 +87,15 @@ export default function Album() {
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      { product.productCode }
+                      { product.brand }
                     </Typography>
                     <Typography>
-                      { product.productDescription }
+                      { product.model }
                     </Typography>
                   </CardContent>
                   <CardActions>
                     <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
+                    <Link to = { '/edit/' + product.id } ><Button size="small">Edit</Button></Link>
                   </CardActions>
                 </Card>
               </Grid>
