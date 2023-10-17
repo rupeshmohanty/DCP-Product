@@ -40,7 +40,7 @@ const EditProductForm = () => {
         axios.post('http://18.170.1.155:8081/products/update/' + productId.id, data, { headers: { 'Content-Type': 'application/json'} })
         .then((res) => {
             if(res.status === 200) {
-                window.location.href = "/";
+                window.location.href = "/product/" + productId.id;
             }
         })
     }
