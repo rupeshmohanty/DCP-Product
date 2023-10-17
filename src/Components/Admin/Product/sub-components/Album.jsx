@@ -14,6 +14,9 @@ import Navbar from "./Navbar";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
@@ -60,12 +63,10 @@ export default function Album() {
               color="text.primary"
               gutterBottom
             >
-              Album layout
+              Our Products
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              Something short and leading about the collection below—its contents,
-              the creator, etc. Make it short and sweet, but not too short so folks
-              don&apos;t simply skip over it entirely.
+            Empowering Your Digital Life: Find Your Perfect Gadgets
             </Typography>
           </Container>
         </Box>
@@ -94,8 +95,15 @@ export default function Album() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small">View</Button>
-                    <Link to = { '/edit/' + product.id } ><Button size="small">Edit</Button></Link>
+                    <Link to = { '/product/' + product.id } ><Button size="small" startIcon={<RemoveRedEyeIcon />}>View</Button></Link>
+                    <Link onClick={ () => {
+                      axios.get('http://18.170.1.155:8081/products/delete/' + product.id, { mode: 'cors' })
+                      .then((res) => {
+                        if(res.status === 200) {
+                          window.location.href = "/";
+                        }
+                      })
+                    } }><Button size="small" startIcon={<DeleteIcon />}>Delete</Button></Link>
                   </CardActions>
                 </Card>
               </Grid>
