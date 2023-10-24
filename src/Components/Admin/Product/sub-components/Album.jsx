@@ -25,7 +25,7 @@ export default function Album() {
 
     React.useEffect(() => {
       const asyncFn = async () => {
-        await axios.get('http://18.170.1.155:8081/products')
+        await axios.get('http://3.8.15.223:8081/products')
         .then((res) => {
             setProducts(res.data)
         })
@@ -97,7 +97,7 @@ export default function Album() {
                   <CardActions>
                     <Link to = { '/product/' + product.id } ><Button size="small" startIcon={<RemoveRedEyeIcon />}>View</Button></Link>
                     <Link onClick={ () => {
-                      axios.get('http://18.170.1.155:8081/products/delete/' + product.id, { mode: 'cors' })
+                      axios.get('http://3.8.15.223:8081/products/delete/' + product.id, { mode: 'cors' })
                       .then((res) => {
                         if(res.status === 200) {
                           window.location.href = "/";

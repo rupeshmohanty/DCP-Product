@@ -19,7 +19,7 @@ const EditProductForm = () => {
     const productId = useParams();
 
     React.useEffect(() => {
-        axios.get('http://18.170.1.155:8081/products/' + productId.id)
+        axios.get('http://3.8.15.223:8081/products/' + productId.id)
         .then((res) => {
             if(res.status === 200) {
                 setData(res.data);
@@ -37,7 +37,7 @@ const EditProductForm = () => {
     }
     const editProduct = (e) => {
         e.preventDefault();
-        axios.post('http://18.170.1.155:8081/products/update/' + productId.id, data, { headers: { 'Content-Type': 'application/json'} })
+        axios.post('http://3.8.15.223:8081/products/update/' + productId.id, data, { headers: { 'Content-Type': 'application/json'} })
         .then((res) => {
             if(res.status === 200) {
                 window.location.href = "/product/" + productId.id;

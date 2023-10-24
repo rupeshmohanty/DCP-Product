@@ -27,7 +27,7 @@ export default function ProductFormData() {
 
         console.log(data);
 
-        axios.post('http://18.170.1.155:8081/products/create', data, { mode: 'cors' })
+        axios.post('http://3.8.15.223:8081/products/create', data, { mode: 'cors' })
             .then((res) => {
                 if(res.status === 200) {
                     window.location.href = "/";
